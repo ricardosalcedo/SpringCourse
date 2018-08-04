@@ -14,22 +14,13 @@
     </bean>
 
     <bean id="myCoach"
-        class="com.bts.springdemo.TrackCoach">
+        class="com.bts.springdemo.TrackCoach"
+        init-method="doMyStartupStuff"
+        destroy-method="doMyCleanupStuff">
 
         <!-- set up constructor injection -->
         <constructor-arg ref="myFortuneService"/>
     </bean>
-
-    <bean id="myCricketCoach"
-        class="com.bts.springdemo.CricketCoach"> 
-        <!--set up setter injection -->
-        <property name="fortuneService" ref="myFortuneService"/>
-
-        <!-- inject literal values -->
-        <property name="emailAddress" value="${foo.email}"/>
-        <property name="team" value="${foo.team}"/>
-    </bean>
-    <context:property-placeholder location="classpath:sport.properties"/>  
 
 </beans>
 
